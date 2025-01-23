@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_15_215944) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_23_120534) do
   create_table "ahoy_events", force: :cascade do |t|
     t.integer "visit_id"
     t.integer "user_id"
@@ -129,6 +129,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_15_215944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "social_profiles", force: :cascade do |t|
+    t.string "value"
+    t.integer "provider"
+    t.string "sociable_type"
+    t.integer "sociable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sociable_type", "sociable_id"], name: "index_social_profiles_on_sociable"
   end
 
   create_table "speaker_talks", force: :cascade do |t|
